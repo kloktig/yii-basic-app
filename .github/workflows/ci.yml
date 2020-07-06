@@ -26,4 +26,4 @@ jobs:
       run: |
         docker-compose up -d
         docker ps -a
-        docker exec -it yii-basic-app vendor/bin/codecept run
+        docker exec -i yii-basic-app vendor/bin/codecept run
