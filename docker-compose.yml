@@ -1,6 +1,7 @@
 version: '3'
 services:
   database:
+    container_name: yii-basic-database
     image: "postgres" # use latest official postgres version
     volumes:
       - /var/lib/postgresql/data/ # persist data even if container shuts down
@@ -12,7 +13,8 @@ services:
     ports:
       - '5431:5432'
   php:
-    image: yiisoftware/yii2-php:7.1-apache 
+    container_name: yii-basic-app
+    image: yiisoftware/yii2-php:7.1-apache
     volumes:
       - ~/.composer-docker/cache:/root/.composer/cache:delegated
       - ./:/app:delegated
