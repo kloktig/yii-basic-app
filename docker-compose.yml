@@ -1,5 +1,16 @@
-version: '2'
+version: '3'
 services:
+  database:
+    image: "postgres" # use latest official postgres version
+    volumes:
+      - /var/lib/postgresql/data/ # persist data even if container shuts down
+    restart: always
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_USER: su
+      POSTGRES_DB: basic_database
+    ports:
+      - '5431:5432'
   php:
     image: yiisoftware/yii2-php:7.1-apache 
     volumes:
