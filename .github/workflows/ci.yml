@@ -26,4 +26,6 @@ jobs:
       run: |
         docker-compose up -d
         docker ps -a
+        docker-compose run --rm php composer update --prefer-dist
+        docker-compose run --rm php composer install 
         docker exec -i yii-basic-app vendor/bin/codecept run
