@@ -22,12 +22,8 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v2
 
-    # Runs a single command using the runners shell
-    - name: Run a one-line script
-      run: docker-compose up -d
-
-    # Runs a set of commands using the runners shell
-    - name: Run a multi-line script
+    - name: Start container and run tests
       run: |
-        echo Add other actions to build,
+        docker-compose up -d
+        docker ps -a
         docker exec -it basic_php_1 vendor/bin/codecept run
